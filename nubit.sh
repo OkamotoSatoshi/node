@@ -30,7 +30,7 @@ function batch_operations() {
 # 定义一个函数来执行第二个批量操作
 function batch_exec_operations() {
     # 询问用户要操作的 Docker 容器的数量
-    read -p "请输入要操作的 Docker 容器的数量: " count
+    read -p "批量保存地址&密钥到nubit-dokcer文件夹: " count
 
     # 批量执行命令并将输出保存到对应的文件中
     for ((i=1; i<=count; i++))
@@ -42,10 +42,28 @@ function batch_exec_operations() {
     echo "Commands executed and output saved to files successfully."
 }
 
+
+# 定义一个函数来执行第二个批量操作
+function show_wallet() {
+    # 询问用户要操作的 Docker 容器的数量
+    read -p "查询数量: " count
+
+    # 批量执行命令并将输出保存到对应的文件中
+    for ((i=1; i<=count; i++))
+    do
+        echo "==================nubit-wallet-$i=========================="
+        docker exec -it nubit-node-$i bash -c "\$HOME/nubit-node/bin/nkey list --p2p.network nubit-alphatestnet-1 --node.type light" > nubit-docker/node-key-$i.txt
+        docker exec -it nubit-node-$i cat ~/nubit-node/mnemonic.txt >> nubit-docker/node-key-$i.txt
+    done
+
+    
+}
+
 # 显示菜单
 echo "请选择一个选项:"
 echo "1. 执行批量构建和运行操作"
-echo "2. 执行批量 exec 操作"
+echo "2. 执行导出钱包到nubit-docker"
+echo "3. 批量查看钱包"
 echo "3. 退出"
 
 # 读取用户输入
@@ -60,7 +78,7 @@ case $choice in
         batch_exec_operations
         ;;
     3)
-        echo "退出"
+        show_wallet
         ;;
     *)
         echo "无效的选择，请输入 1、2 或 3"
