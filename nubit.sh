@@ -63,7 +63,7 @@ echo "请选择一个选项:"
 echo "1. 执行批量构建和运行操作"
 echo "2. 执行导出钱包nubit-docker"
 echo "3. 批量查看钱包"
-echo "4. 退出"
+echo "4. ====退出===="
 
 # 读取用户输入
 read -p "请输入你的选择: " choice
