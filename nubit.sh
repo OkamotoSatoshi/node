@@ -3,10 +3,10 @@
 # 定义一个函数来执行批量操作
 function batch_operations() {
     # Step 1: 创建一个文件夹 nubit-docker
-    mkdir -p /root/nubit-docker
+    mkdir -p nubit-docker
 
     # Step 2: 进入 nubit-docker 文件夹，然后下载 Dockerfile
-    cd /root/nubit-docker
+    cd nubit-docker
     curl -O https://raw.githubusercontent.com/OkamotoSatoshi/node/main/Dockerfile
 
     # Step 3: 批量创建 Docker 镜像
