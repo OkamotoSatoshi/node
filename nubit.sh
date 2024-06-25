@@ -52,8 +52,7 @@ function show_wallet() {
     for ((i=1; i<=count; i++))
     do
         echo "==================nubit-wallet-$i=========================="
-        docker exec -it nubit-node-$i bash -c "\$HOME/nubit-node/bin/nkey list --p2p.network nubit-alphatestnet-1 --node.type light" > nubit-docker/node-key-$i.txt
-        docker exec -it nubit-node-$i cat ~/nubit-node/mnemonic.txt >> nubit-docker/node-key-$i.txt
+        cat /root/nubit-docker/node-key-$i.txt
     done
 
     
